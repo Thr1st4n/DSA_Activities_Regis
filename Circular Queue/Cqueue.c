@@ -48,46 +48,46 @@ void dequeue(CircularQ *L) {
     }
 }
 
-//void display(CircularQ L){
-//	int i=0;
-//	CircularQ temp;
-//	initQ(&temp);
-//	if(isEmpty(L)){
-//		printf("Queue is empty!\n");
-//	}else{
-//		printf("Front->");
-//		while(!isEmpty(L)){
-//			enqueue(&temp,L.data[L.front]);
-//			L.front == L.rear?printf("Rear->",L.rear):printf("");
-//			printf("\t\t[%d] | %d\n",L.front,L.data[L.front]);
-//			dequeue(&L);
-//		}
-//		while(!isFull){
-//			enqueue(&L,temp.data[temp.front]);
-//			dequeue(&temp);
-//		}
-//	}
-//	
-//	
-//}
-
-
 void display(CircularQ L){
-	int i;
+	int i=0;
+	CircularQ temp;
+	initQ(&temp);
 	if(isEmpty(L)){
 		printf("Queue is empty!\n");
 	}else{
 		printf("Front->");
-		
-		for(i=L.front; i!=(L.rear+1)%MAX;i = (i+1)%MAX){
-			i == L.rear?printf("Rear->",L.rear):printf("");
-			printf("\t\t[%d] | %d\n",i,L.data[i]);
-		
-	}
+		while(!isEmpty(L)){
+			enqueue(&temp,L.data[L.front]);
+			L.front == L.rear?printf("Rear->",L.rear):printf("");
+			printf("\t\t[%d] | %d\n",L.front,L.data[L.front]);
+			dequeue(&L);
+		}
+		while(!isFull){
+			enqueue(&L,temp.data[temp.front]);
+			dequeue(&temp);
+		}
 	}
 	
 	
 }
+
+
+//void display(CircularQ L){
+//	int i;
+//	if(isEmpty(L)){
+//		printf("Queue is empty!\n");
+//	}else{
+//		printf("Front->");
+//		
+//		for(i=L.front; i!=(L.rear+1)%MAX;i = (i+1)%MAX){
+//			i == L.rear?printf("Rear->",L.rear):printf("");
+//			printf("\t\t[%d] | %d\n",i,L.data[i]);
+//		
+//	}
+//	}
+//	
+//	
+//}
 
 
 
