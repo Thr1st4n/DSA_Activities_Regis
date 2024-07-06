@@ -24,7 +24,7 @@ void add(NodePtr *head, Product newItem);
 void inorderTraversal(NodePtr node);
 void preorderTraversal(NodePtr node);
 void postorderTraversal(NodePtr node);
-void delete(NodePtr* head);
+void delete(NodePtr *head,char item[]);
 
 
 #endif
