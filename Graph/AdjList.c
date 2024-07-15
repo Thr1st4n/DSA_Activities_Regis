@@ -53,6 +53,38 @@ void addEdge(Graph* graph, char from, char to) {
     printf("Adding edge from %c to %c\n",from, to);
 }
 
+
+void removeEdge(Graph* graph, char from, char to) {
+    int fromIndex = from - 'A';
+    int toIndex = to - 'A';
+    
+    Node* prev = NULL;
+    Node* curr = graph->adjLists[fromIndex];
+    
+    while (curr != NULL && curr->vertex != to) {
+        prev = curr;
+        curr = curr->next;
+    }
+    
+    if (curr == NULL) {
+        printf("Edge from %c to %c does not exist.\n", from, to);
+        return;
+    }
+    
+    if (prev == NULL) {
+     
+        graph->adjLists[fromIndex] = curr->next;
+    } else {
+       
+        prev->next = curr->next;
+    }
+    
+    free(curr);
+    
+    printf("Removed edge from %c to %c\n", from, to);
+}
+
+
 int main() {
     int i, numVertices = 5; 
     Graph* graph = malloc(sizeof(Graph));
@@ -73,6 +105,12 @@ int main() {
 
     printf("\nAdjacency list after adding edges:\n");
     display(graph);
+    
+    
+    
+    removeEdge(graph,'A','B');
+    display(graph);
+    
 
     return 0;
 }
